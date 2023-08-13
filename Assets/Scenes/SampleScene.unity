@@ -697,7 +697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422544995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73556495, y: -0.6607332, z: 0.07089528}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -721,15 +721,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858614, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6245837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858614, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9032981
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858614, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.043911178
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858614, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: m_LocalRotation.w
@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: obstacles.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
       propertyPath: obstacles.Array.data[2]
@@ -775,6 +775,18 @@ PrefabInstance:
       propertyPath: obstacles.Array.data[4]
       value: 
       objectReference: {fileID: 8310885179208400885, guid: 7226bc83da91f9842bcb138e36102fb3, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[5]
+      value: 
+      objectReference: {fileID: 8101918415977416965, guid: 44e7efee017f7ef4d9ed48b13123fd43, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[6]
+      value: 
+      objectReference: {fileID: 3111643397472258174, guid: f6798909d1ef54d4f96fd685f688d5e7, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[7]
+      value: 
+      objectReference: {fileID: 8310885179208400885, guid: 6b82e3555fe6935408454584c1167348, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
 --- !u!1001 &8128888197432459264
@@ -810,15 +822,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8128888198566641890, guid: 96059b007c5f72444b27c517e5f44ea1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.47096708
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128888198566641890, guid: 96059b007c5f72444b27c517e5f44ea1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5476831
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128888198566641890, guid: 96059b007c5f72444b27c517e5f44ea1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.018706627
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128888198566641890, guid: 96059b007c5f72444b27c517e5f44ea1, type: 3}
       propertyPath: m_LocalRotation.w
