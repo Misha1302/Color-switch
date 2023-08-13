@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Obstacles
 {
-    public class ObstacleRotater : MonoBehaviour
+    public class ObstacleRotater : GameClass
     {
         [SerializeField] private float defaultSpeed;
         [SerializeField] private float maxDelta;
@@ -11,7 +11,7 @@ namespace Obstacles
         private float _curSpeed;
         private Vector3 _direction;
 
-        private void Start()
+        protected override void AtStart()
         {
             _curSpeed = defaultSpeed + (Random.value - 0.5f) * maxDelta;
             _direction =
@@ -20,7 +20,7 @@ namespace Obstacles
                     : direction;
         }
 
-        private void FixedUpdate()
+        protected override void AtFixedUpdate()
         {
             transform.Rotate(_direction * _curSpeed);
         }

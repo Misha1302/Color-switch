@@ -1,12 +1,4 @@
-using UnityEngine;
-
-public sealed class ScoreCounter : MonoBehaviour, IInitializable
+public sealed class ScoreCounter : GameClass
 {
-    private GameManager _gameManager;
-    public int ScoreCount => (int)(_gameManager.Ball.transform.position.y / 7);
-
-    public void Init(GameManager gameManager)
-    {
-        _gameManager = gameManager;
-    }
+    public int ScoreCount => (int)(GameManager.Ball.transform.position.y / 7);
 }

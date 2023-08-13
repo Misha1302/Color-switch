@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-
-namespace Obstacles
+﻿namespace Obstacles
 {
-    public sealed class LineMovement : MonoBehaviour
+    using UnityEngine;
+
+    public sealed class LineMovement : GameClass
     {
         [Header("Hangs on an object upon contact with which the panel teleports to startPos")]
         [SerializeField] private Transform startPos;
@@ -13,17 +13,17 @@ namespace Obstacles
 
         private Vector3 _direction;
 
-        private void Start()
+        protected override void AtStart()
         {
             _direction = new Vector3(lineDirection + Random.Range(-maxDelta, maxDelta), 0, 0);
         }
 
-        private void FixedUpdate()
+        protected override void AtFixedUpdate()
         {
             line.position += _direction;
         }
 
-        private void OnTriggerEnter2D(Collider2D other) 
+        protected override void AtOnTriggerEnter2D(Collider2D other)
         {
             other.transform.position = startPos.position;
         }

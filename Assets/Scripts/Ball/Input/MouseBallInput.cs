@@ -1,13 +1,12 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 
 namespace Ball.Input
 {
     using Input = UnityEngine.Input;
 
-    public sealed class MouseBallInput : MonoBehaviour, IBallInput
+    public sealed class MouseBallInput : GameClass, IBallInput
     {
-        private void Update()
+        protected override void AtUpdate()
         {
             if (Input.GetMouseButtonDown(0))
                 OnClick.Invoke();

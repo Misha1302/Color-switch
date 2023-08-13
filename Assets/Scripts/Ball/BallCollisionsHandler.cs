@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace Ball
 {
-    public sealed class BallCollisionsHandler : MonoBehaviour, IInitializable
+    public sealed class BallCollisionsHandler : GameClass
     {
-        private GameManager _gameManager;
         private List<int> _mask;
 
-        private void Start()
+        protected override void AtStart()
         {
             _mask = new List<int>
             {
@@ -19,20 +18,15 @@ namespace Ball
             };
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected override void AtOnTriggerEnter2D(Collider2D other)
         {
             if (!_mask.Contains(other.gameObject.layer))
                 return;
 
             var layerName = LayerMask.LayerToName(other.gameObject.layer);
-            var colorName = _gameManager.Ball.PlayerColor.ToString();
+            var colorName = GameManager.Ball.PlayerColor.ToString();
             if (layerName != colorName)
-                _gameManager.StateManager.Lose();
-        }
-
-        public void Init(GameManager gameManager)
-        {
-            _gameManager = gameManager;
+                GameManager.StateManager.Lose();
         }
     }
 }

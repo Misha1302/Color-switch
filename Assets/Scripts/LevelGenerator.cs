@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -46,8 +48,9 @@ public sealed class LevelGenerator : MonoBehaviour, IInitializable
             obj.position = position;
             position += new Vector3(0, distanceDelta, 0);
 
-            if (TryGetComponentInChildren<IInitializable>(obj, out var initializable))
-                initializable.Init(_gameManager);
+            var list = MGetComponentInChildren<IInitializable>(obj);
+            if (list.Any())
+                list.ForEach(x => x.Init(_gameManager));
 
             OnGenerateBlock.Invoke(obj.gameObject);
 
@@ -59,15 +62,17 @@ public sealed class LevelGenerator : MonoBehaviour, IInitializable
         // ReSharper disable once IteratorNeverReturns
     }
 
-    private static bool TryGetComponentInChildren<T>(Transform t, out T comp)
+    private static List<T> MGetComponentInChildren<T>(Transform t, List<T> comps = null)
     {
-        if (t.TryGetComponent(out comp))
-            return true;
+        comps ??= new List<T>();
+
+        var collection = t.GetComponents<T>();
+        if (collection.Length != 0)
+            comps.AddRange(collection);
 
         for (var i = 0; i < t.childCount; i++)
-            if (TryGetComponentInChildren(t.GetChild(i), out comp))
-                return true;
+            MGetComponentInChildren(t.GetChild(i), comps);
 
-        return false;
+        return comps;
     }
 }

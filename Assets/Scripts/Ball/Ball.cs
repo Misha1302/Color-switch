@@ -1,16 +1,15 @@
-using UnityEngine;
-
 namespace Ball
 {
+    using UnityEngine;
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(BallCollisionsHandler))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public sealed class Ball : MonoBehaviour, IInitializable
+    public sealed class Ball : GameClass
     {
         [SerializeField] private float force;
 
         private BallColorManager _ballColorManager;
-        private GameManager _gameManager;
         private BallColor _playerColor;
         private Rigidbody2D _rb2D;
         private SpriteRenderer _spriteRenderer;
@@ -25,16 +24,24 @@ namespace Ball
             }
         }
 
-        public void Init(GameManager gameManager)
+        protected override void AtInit()
         {
             _ballColorManager = new BallColorManager();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _gameManager = gameManager;
             _rb2D = GetComponent<Rigidbody2D>();
-            GetComponent<BallCollisionsHandler>().Init(gameManager);
+            GetComponent<BallCollisionsHandler>().Init(GameManager);
 
-            _gameManager.MouseBallInput.OnClick.AddListener(Jump);
+            GameManager.MouseBallInput.OnClick.AddListener(Jump);
             PlayerColor = BallColor.Yellow;
+            GameManager.StateManager.onStateChanged.AddListener(OnStateChanged);
+        }
+
+        private void OnStateChanged(StateEnum state)
+        {
+            if (!state.HasFlag(StateEnum.EndOfGame)) return;
+
+            _rb2D.gravityScale = 0f;
+            _rb2D.velocity = Vector2.zero;
         }
 
         private void Jump()

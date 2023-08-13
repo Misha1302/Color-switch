@@ -3,29 +3,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public sealed class LoseState : MonoBehaviour, IInitializable
+public sealed class LoseState : GameClass
 {
     [SerializeField] private Canvas loseCanvas;
     [SerializeField] private Button restart;
     [SerializeField] private TMP_Text scoreCount;
-    private GameManager _gameManager;
 
-    private void Start()
+    protected override void AtStart()
     {
-        loseCanvas.enabled = false;
+        loseCanvas.gameObject.SetActive(false);
 
         restart.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
 
-    public void Init(GameManager gameManager)
-    {
-        _gameManager = gameManager;
-    }
-
     public void Lose()
     {
-        loseCanvas.enabled = true;
-        scoreCount.text = string.Format(scoreCount.text, _gameManager.ScoreCounter.ScoreCount);
+        loseCanvas.gameObject.SetActive(true);
+        scoreCount.text = string.Format(scoreCount.text, GameManager.ScoreCounter.ScoreCount);
         // TODO: call saver
     }
 }

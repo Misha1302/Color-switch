@@ -17,17 +17,21 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameClass input;
+
         if (Input.touchSupported)
-            MouseBallInput = gameObject.AddComponent<TouchBallInput>();
-        else MouseBallInput = gameObject.AddComponent<MouseBallInput>();
+            MouseBallInput = (IBallInput)(input = gameObject.AddComponent<TouchBallInput>());
+        else MouseBallInput = (IBallInput)(input = gameObject.AddComponent<MouseBallInput>());
 
         ScoreCounter = gameObject.AddComponent<ScoreCounter>();
 
+        ScoreCounter.Init(this);
         Ball.Init(this);
         LevelGenerator.Init(this);
         StateManager.Init(this);
         ScoreCounter.Init(this);
         optimizer.Init(this);
+        input.Init(this);
 
         LevelGenerator.InitPredicate(pos => ball.transform.position.y + 40 > pos.y);
     }
