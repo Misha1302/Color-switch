@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 2
   maxDelta: 0.5
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &2604447147015785075
 GameObject:
   m_ObjectHideFlags: 0

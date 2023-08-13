@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using Ball.Input;
+using UnityEngine;
 
 public sealed class GameManager : MonoBehaviour
 {
-    [SerializeField] private Ball ball;
+    [SerializeField] private Ball.Ball ball;
     [SerializeField] private LevelGenerator levelGenerator;
     [SerializeField] private Optimizer optimizer;
+    [SerializeField] private StateManager stateManager;
 
     public IBallInput MouseBallInput { get; private set; }
-    public StateManager StateManager { get; private set; }
-    public Ball Ball => ball;
+    public ScoreCounter ScoreCounter { get; private set; }
+
+    public Ball.Ball Ball => ball;
     public LevelGenerator LevelGenerator => levelGenerator;
+    public StateManager StateManager => stateManager;
 
     private void Awake()
     {
@@ -17,11 +21,14 @@ public sealed class GameManager : MonoBehaviour
             MouseBallInput = gameObject.AddComponent<TouchBallInput>();
         else MouseBallInput = gameObject.AddComponent<MouseBallInput>();
 
-        StateManager = new StateManager();
+        ScoreCounter = gameObject.AddComponent<ScoreCounter>();
 
         Ball.Init(this);
         LevelGenerator.Init(this);
-        LevelGenerator.InitPredicate(pos => ball.transform.position.y + 40 > pos.y);
+        StateManager.Init(this);
+        ScoreCounter.Init(this);
         optimizer.Init(this);
+
+        LevelGenerator.InitPredicate(pos => ball.transform.position.y + 40 > pos.y);
     }
 }
