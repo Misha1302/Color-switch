@@ -3,25 +3,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public sealed class LoseState : GameClass
+namespace State
 {
-    [SerializeField] private Canvas loseCanvas;
-    [SerializeField] private Button restart;
-    [SerializeField] private TMP_Text earnScoreCount;
-    [SerializeField] private TMP_Text totalScoreCount;
-
-    protected override void AtStart()
+    public sealed class LoseState : GameClass
     {
-        loseCanvas.gameObject.SetActive(false);
+        [SerializeField] private Canvas loseCanvas;
+        [SerializeField] private Button restart;
+        [SerializeField] private TMP_Text earnScoreCount;
+        [SerializeField] private TMP_Text totalScoreCount;
 
-        restart.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
-    }
+        protected override void AtStart()
+        {
+            loseCanvas.gameObject.SetActive(false);
 
-    public void Lose()
-    {
-        loseCanvas.gameObject.SetActive(true);
-        earnScoreCount.text = string.Format(earnScoreCount.text, GameManager.GameDataManager.GetEarnedScore());
-        totalScoreCount.text = string.Format(totalScoreCount.text, GameManager.GameDataManager.GetTotalScore());
-        GameManager.GameDataManager.Save();
+            restart.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+        }
+
+        public void Lose()
+        {
+            loseCanvas.gameObject.SetActive(true);
+            earnScoreCount.text = string.Format(earnScoreCount.text, GameManager.GameDataManager.GetEarnedScore());
+            totalScoreCount.text = string.Format(totalScoreCount.text, GameManager.GameDataManager.GetTotalScore());
+            GameManager.GameDataManager.Save();
+        }
     }
 }

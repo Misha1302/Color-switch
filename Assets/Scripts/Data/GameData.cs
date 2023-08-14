@@ -1,12 +1,15 @@
 ﻿using System;
 
-[Serializable]
-public class GameData
+namespace Data
 {
-    public int scoreCount;
-
-    public GameData(int scoreCount)
+    [Serializable]
+    public class GameData
     {
-        this.scoreCount = scoreCount;
+        public int scoreCount;
+
+        public GameData(int scoreCount)
+        {
+            this.scoreCount = scoreCount;
+        }
     }
 }

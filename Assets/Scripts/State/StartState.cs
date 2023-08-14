@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class StartState : MonoBehaviour, IInitializable
+namespace State
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private Button start;
-    private GameManager _gameManager;
-
-    public void Init(GameManager gameManager)
+    public sealed class StartState : MonoBehaviour, IInitializable
     {
-        canvas.gameObject.SetActive(true);
-        _gameManager = gameManager;
-        
-        start.onClick.AddListener(() =>
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private Button start;
+        private GameManager _gameManager;
+
+        public void Init(GameManager gameManager)
         {
-            canvas.gameObject.SetActive(false);
-            _gameManager.StateManager.StartGame();
-        });
+            canvas.gameObject.SetActive(true);
+            _gameManager = gameManager;
+        
+            start.onClick.AddListener(() =>
+            {
+                canvas.gameObject.SetActive(false);
+                _gameManager.StateManager.StartGame();
+            });
+        }
     }
 }

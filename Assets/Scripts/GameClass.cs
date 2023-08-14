@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using State;
+using UnityEngine;
 
 public class GameClass : MonoBehaviour, IInitializable
 {

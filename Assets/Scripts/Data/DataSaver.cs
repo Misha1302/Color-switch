@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public static class DataSaver
+namespace Data
 {
-    public static void Save<T>(T value)
+    public static class DataSaver
     {
-        PlayerPrefs.SetString("data", JsonUtility.ToJson(value, true));
-    }
+        public static void Save<T>(T value)
+        {
+            PlayerPrefs.SetString("data", JsonUtility.ToJson(value, true));
+        }
 
-    public static T Load<T>()
-    {
-        var defaultValue = JsonUtility.ToJson(default(T), true);
-        var json = PlayerPrefs.GetString("data", defaultValue);
-        return JsonUtility.FromJson<T>(json);
+        public static T Load<T>()
+        {
+            var defaultValue = JsonUtility.ToJson(default(T), true);
+            var json = PlayerPrefs.GetString("data", defaultValue);
+            return JsonUtility.FromJson<T>(json);
+        }
     }
 }
