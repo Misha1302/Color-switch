@@ -38,10 +38,15 @@ namespace Ball
 
         private void OnStateChanged(StateEnum state)
         {
-            if (!state.HasFlag(StateEnum.EndOfGame)) return;
-
-            _rb2D.gravityScale = 0f;
-            _rb2D.velocity = Vector2.zero;
+            if (state.HasFlag(StateEnum.EndOfGame))
+            {
+                _rb2D.gravityScale = 0f;
+                _rb2D.velocity = Vector2.zero;
+            }
+            else if (state.HasFlag(StateEnum.Game))
+            {
+                Jump();
+            }
         }
 
         private void Jump()

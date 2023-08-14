@@ -3,21 +3,17 @@ using UnityEngine;
 
 public sealed class StatisticManager : GameClass
 {
-    [SerializeField] private TMP_Text totalScore;
     [SerializeField] private TMP_Text earnedScore;
+    [SerializeField] private string textFormat;
 
-    private string totalScoreFormat;
-    private string earnedScoreFormat;
 
     protected override void AtStart()
     {
-        totalScoreFormat = totalScore.text;
-        earnedScoreFormat = earnedScore.text;
+        AtUpdate();
     }
 
     protected override void AtUpdate()
     {
-        totalScore.text = string.Format(totalScoreFormat, GameManager.GameDataManager.GetTotalScore());
-        earnedScore.text = string.Format(earnedScoreFormat, GameManager.GameDataManager.GetEarnedScore());
+        earnedScore.text = string.Format(textFormat, GameManager.GameDataManager.GetEarnedScore());
     }
 }

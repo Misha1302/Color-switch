@@ -7,7 +7,8 @@ public sealed class LoseState : GameClass
 {
     [SerializeField] private Canvas loseCanvas;
     [SerializeField] private Button restart;
-    [SerializeField] private TMP_Text scoreCount;
+    [SerializeField] private TMP_Text earnScoreCount;
+    [SerializeField] private TMP_Text totalScoreCount;
 
     protected override void AtStart()
     {
@@ -19,7 +20,8 @@ public sealed class LoseState : GameClass
     public void Lose()
     {
         loseCanvas.gameObject.SetActive(true);
-        scoreCount.text = string.Format(scoreCount.text, GameManager.ScoreCounter.ScoreCount);
+        earnScoreCount.text = string.Format(earnScoreCount.text, GameManager.GameDataManager.GetEarnedScore());
+        totalScoreCount.text = string.Format(totalScoreCount.text, GameManager.GameDataManager.GetTotalScore());
         GameManager.GameDataManager.Save();
     }
 }

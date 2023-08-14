@@ -606,8 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6b535809bb1b34b93d2f5165c1e6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 0.75
-  maxDelta: 0
+  defaultSpeed: 1
+  maxDelta: 0.5
   direction: {x: 0, y: 0, z: 0}
 --- !u!1 &3095890511470638685
 GameObject:

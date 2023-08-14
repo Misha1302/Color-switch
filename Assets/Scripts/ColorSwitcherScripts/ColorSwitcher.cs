@@ -34,10 +34,11 @@ namespace ColorSwitcherScripts
         {
             _time += Time.deltaTime;
 
-            var color = Color.Lerp(_colors[_srcColorInt], _colors[_dstColorInt], Mathf.PingPong(_time * 0.4f, 1));
+            var color = Color.Lerp(_colors[_srcColorInt], _colors[_dstColorInt], Mathf.PingPong(_time * 0.6f, 1));
             _renderer.material.color = color;
 
-            if (!EqualsColors(color, _colors[_dstColorInt])) return;
+            if (!EqualsColors(color, _colors[_dstColorInt]))
+                return;
 
             _time = 0;
             ChangeColor();
@@ -57,10 +58,9 @@ namespace ColorSwitcherScripts
                 _dstColorInt = Random.Range(0, _colors.Length);
         }
 
-        private static bool EqualsColors(Color a, Color b) => EqualsFloats(a.a, b.a)
-                                                              && EqualsFloats(a.r, b.r)
-                                                              && EqualsFloats(a.g, b.g)
-                                                              && EqualsFloats(a.b, b.b);
+        private static bool EqualsColors(Color a, Color b) =>
+            EqualsFloats(a.a, b.a)
+            && EqualsFloats(a.r, b.r) && EqualsFloats(a.g, b.g) && EqualsFloats(a.b, b.b);
 
         private static bool EqualsFloats(float a, float b) => Math.Abs(a - b) < 0.01f;
     }
