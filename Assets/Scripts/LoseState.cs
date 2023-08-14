@@ -20,6 +20,6 @@ public sealed class LoseState : GameClass
     {
         loseCanvas.gameObject.SetActive(true);
         scoreCount.text = string.Format(scoreCount.text, GameManager.ScoreCounter.ScoreCount);
-        // TODO: call saver
+        GameManager.GameDataManager.Save();
     }
 }
