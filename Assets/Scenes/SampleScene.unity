@@ -1926,7 +1926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: freger
+  m_text: 101
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67349765c92c81241869a8677e079014, type: 2}
   m_sharedMaterial: {fileID: -2896551994182120566, guid: 67349765c92c81241869a8677e079014, type: 2}

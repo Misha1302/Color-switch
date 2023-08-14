@@ -47,5 +47,14 @@ MonoBehaviour:
   obstacles:
   - {fileID: 1591800269302728302, guid: 714938fddd4a4d14fb65c75f342dd518, type: 3}
   - {fileID: 760545541525262529, guid: 7c1d347889ccce448a02950be444b525, type: 3}
+  - {fileID: 5296974983711781359, guid: 64d46ff9cb2566a438ef9e3c7d448fb6, type: 3}
+  - {fileID: 2303308628363191640, guid: eb02ea1fbb6977d4b8b403bcaa679565, type: 3}
+  - {fileID: 8101918415977416965, guid: 44e7efee017f7ef4d9ed48b13123fd43, type: 3}
+  - {fileID: 3111643397472258174, guid: f6798909d1ef54d4f96fd685f688d5e7, type: 3}
+  - {fileID: 8310885179208400885, guid: 7226bc83da91f9842bcb138e36102fb3, type: 3}
+  - {fileID: 8310885179208400885, guid: 6b82e3555fe6935408454584c1167348, type: 3}
+  - {fileID: 8310885179208400885, guid: f5ec35847dadcaa4fba058940c19f9e9, type: 3}
+  - {fileID: 8310885179208400885, guid: 786f3984be8e4554fa0f17e314afda16, type: 3}
+  - {fileID: 3095890511290308345, guid: 241673742539cd449bffeb511207c4e7, type: 3}
   distanceDelta: 7
   startPosition: {x: 0, y: 5, z: 0}
