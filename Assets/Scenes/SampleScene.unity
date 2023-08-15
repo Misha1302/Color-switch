@@ -2174,6 +2174,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[2]
+      value: 
+      objectReference: {fileID: 5296974983711781359, guid: 64d46ff9cb2566a438ef9e3c7d448fb6, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[3]
+      value: 
+      objectReference: {fileID: 2303308628363191640, guid: eb02ea1fbb6977d4b8b403bcaa679565, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[4]
+      value: 
+      objectReference: {fileID: 8101918415977416965, guid: 44e7efee017f7ef4d9ed48b13123fd43, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[5]
+      value: 
+      objectReference: {fileID: 3111643397472258174, guid: f6798909d1ef54d4f96fd685f688d5e7, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[6]
+      value: 
+      objectReference: {fileID: 8310885179208400885, guid: 7226bc83da91f9842bcb138e36102fb3, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[7]
+      value: 
+      objectReference: {fileID: 8310885179208400885, guid: 6b82e3555fe6935408454584c1167348, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[8]
+      value: 
+      objectReference: {fileID: 8310885179208400885, guid: f5ec35847dadcaa4fba058940c19f9e9, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[9]
+      value: 
+      objectReference: {fileID: 8310885179208400885, guid: 786f3984be8e4554fa0f17e314afda16, type: 3}
+    - target: {fileID: 6458521942310858615, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
+      propertyPath: obstacles.Array.data[10]
+      value: 
+      objectReference: {fileID: 3095890511290308345, guid: 241673742539cd449bffeb511207c4e7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1337bf1a300b80e48bffc94119965164, type: 3}
 --- !u!1001 &8128888197432459264
