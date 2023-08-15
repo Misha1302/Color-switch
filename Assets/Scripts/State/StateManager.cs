@@ -10,7 +10,7 @@ namespace State
 
         [HideInInspector] public UnityEvent<StateEnum> onStateChanged = new();
 
-        public StateEnum StateEnum { get; private set; } = StateEnum.Start;
+        public StateEnum StateEnum { get; private set; } = StateEnum.Auth;
 
         public void Init(GameManager gameManager)
         {
@@ -19,16 +19,28 @@ namespace State
             onStateChanged.Invoke(StateEnum);
         }
 
-        public void Lose()
+        public void SwitchLose()
         {
             StateEnum = StateEnum.Lose;
             loseState.Lose();
             onStateChanged.Invoke(StateEnum);
         }
 
-        public void StartGame()
+        public void SwitchGame()
         {
             StateEnum = StateEnum.Game;
+            onStateChanged.Invoke(StateEnum);
+        }
+
+        public void SwitchStart()
+        {
+            StateEnum = StateEnum.Start;
+            onStateChanged.Invoke(StateEnum);
+        }
+
+        public void SwitchBeforeStart()
+        {
+            StateEnum = StateEnum.BeforeStart;
             onStateChanged.Invoke(StateEnum);
         }
     }

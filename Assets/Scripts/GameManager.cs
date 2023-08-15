@@ -1,5 +1,9 @@
-﻿using Ball.Input;
+﻿using System.Linq;
+using Ball.Input;
 using Data;
+using Firebase;
+using GameDataBase;
+using GameDataBase.Ui;
 using State;
 using UnityEngine;
 
@@ -13,6 +17,7 @@ public sealed class GameManager : MonoBehaviour
     public IBallInput MouseBallInput { get; private set; }
     public ScoreCounter ScoreCounter { get; private set; }
     public GameDataManager GameDataManager { get; private set; }
+    public FirebaseManager FirebaseManager { get; private set; }
 
     public Ball.Ball Ball => ball;
     public LevelGenerator LevelGenerator => levelGenerator;
@@ -23,6 +28,7 @@ public sealed class GameManager : MonoBehaviour
         var input = InitInput();
         var optimizer = gameObject.AddComponent<Optimizer>();
         ScoreCounter = gameObject.AddComponent<ScoreCounter>();
+        FirebaseManager = gameObject.AddComponent<FirebaseManager>();
 
         GameDataManager = new GameDataManager();
 
@@ -35,6 +41,8 @@ public sealed class GameManager : MonoBehaviour
         statisticManager.Init(this);
         input.Init(this);
         optimizer.Init(this);
+
+        FindObjectsOfType<AuthUi>().ToList().ForEach(x => x.Init(this));
 
         LevelGenerator.InitPredicate(pos => ball.transform.position.y + 40 > pos.y);
     }

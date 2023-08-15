@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-namespace State
+﻿namespace State
 {
+    using UnityEngine;
+    using UnityEngine.UI;
+
     public sealed class StartState : MonoBehaviour, IInitializable
     {
         [SerializeField] private Canvas canvas;
@@ -11,13 +11,21 @@ namespace State
 
         public void Init(GameManager gameManager)
         {
-            canvas.gameObject.SetActive(true);
             _gameManager = gameManager;
-        
+
+            _gameManager.StateManager.onStateChanged.AddListener(state =>
+            {
+                if (state.HasFlag(StateEnum.BeforeStart))
+                    canvas.gameObject.SetActive(true);
+            });
+
             start.onClick.AddListener(() =>
             {
+                if (!_gameManager.StateManager.StateEnum.HasFlag(StateEnum.BeforeStart))
+                    return;
+
                 canvas.gameObject.SetActive(false);
-                _gameManager.StateManager.StartGame();
+                _gameManager.StateManager.SwitchGame();
             });
         }
     }

@@ -26,7 +26,7 @@ namespace Ball
             var layerName = LayerMask.LayerToName(other.gameObject.layer);
             var colorName = GameManager.Ball.PlayerColor.ToString();
             if (layerName != colorName)
-                GameManager.StateManager.Lose();
+                GameManager.StateManager.SwitchLose();
         }
     }
 }
