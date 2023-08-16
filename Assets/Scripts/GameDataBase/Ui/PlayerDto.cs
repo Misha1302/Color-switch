@@ -7,15 +7,15 @@
     {
         public string password;
         public int score;
-        public string id;
+        public string login;
 
-        public PlayerDto(string id, string password, int score)
+        public PlayerDto(string login, string password, int score)
         {
-            this.id = id;
+            this.login = login;
             this.password = password;
             this.score = score;
         }
 
-        public string GetId() => id;
+        public string GetId() => login;
     }
 }

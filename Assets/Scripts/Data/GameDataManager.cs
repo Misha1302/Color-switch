@@ -26,7 +26,7 @@
 
         public void SetUser(PlayerDto user)
         {
-            _login = user.id;
+            _login = user.login;
             _password = user.password;
             _scoreCount = user.score;
         }

@@ -33,7 +33,8 @@ namespace GameDataBase
         public void SetUser<T>(T user) where T : IHaveId
         {
             var json = JsonUtility.ToJson(user);
-            _db.Child("users").Child(user.GetId()).SetRawJsonValueAsync(json);
+            var userId = user.GetId();
+            _db.Child("users").Child(userId).SetRawJsonValueAsync(json);
         }
 
         public void GetUser<T>(string userId, Action<T> whenUserReceived) where T : IHaveId
@@ -48,8 +49,9 @@ namespace GameDataBase
 
                 try
                 {
-                    var json = (Dictionary<string, object>)task.Result.Value;
-                    var obj = JsonUtility.FromJson<T>(JsonConvert.SerializeObject(json));
+                    var dict = (Dictionary<string, object>)task.Result.Value;
+                    var json = JsonConvert.SerializeObject(dict);
+                    var obj = JsonUtility.FromJson<T>(json);
                     whenUserReceived.Invoke(obj);
                 }
                 catch
