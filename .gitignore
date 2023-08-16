@@ -155,3 +155,10 @@ sysinfo.txt
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # End of https://www.toptal.com/developers/gitignore/api/rider,unity
+
+Assets/google-services.json
+Assets/google-services.json.meta
+Assets/Plugins/Android/FirebaseApp.androidlib/res/values/google-services.xml
+Assets/Scripts/GameDataBase/FirebaseManagerSecrets.cs
+Assets/Scripts/GameDataBase/FirebaseManagerSecrets.cs.meta
+Assets/StreamingAssets/google-services-desktop.json
