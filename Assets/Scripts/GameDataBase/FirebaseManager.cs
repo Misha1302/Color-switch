@@ -24,9 +24,8 @@ namespace GameDataBase
                 else
                     throw new Exception($"Could not resolve all Firebase dependencies: {dependencyStatus}");
 
-                const string uri = "https://color-switch-d7357-default-rtdb.firebaseio.com";
-                _app.Options.DatabaseUrl = new Uri(uri);
-                _db = FirebaseDatabase.GetInstance(uri).RootReference;
+                _app.Options.DatabaseUrl = new Uri(FirebaseManagerSecrets.RealtimeDatabaseUrl);
+                _db = FirebaseDatabase.GetInstance(FirebaseManagerSecrets.RealtimeDatabaseUrl).RootReference;
             });
         }
 
