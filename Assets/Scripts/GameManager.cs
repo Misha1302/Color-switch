@@ -15,7 +15,7 @@ public sealed class GameManager : MonoBehaviour
     [SerializeField] private StateManager stateManager;
     [SerializeField] private StatisticManager statisticManager;
     [SerializeField] private PlayersList playersList;
-    [SerializeField] private MaxYPanel maxYPanel;
+    [SerializeField] private MaxYPanels maxYPanel;
 
     public IBallInput MouseBallInput { get; private set; }
     public HeightCounter HeightCounter { get; private set; }

@@ -9,7 +9,7 @@
 
         public void SetText(string prefix, float maxY)
         {
-            text.text = $"{prefix} - {maxY:#.##}";
+            text.text = $"{prefix}\n{maxY:#.##}";
         }
     }
 }
