@@ -1,34 +1,39 @@
 ﻿namespace Data
 {
+    using GameDataBase;
     using GameDataBase.Ui;
+    using UnityEngine;
 
     public sealed class GameDataManager : IInitializable
     {
         private GameManager _gameManager;
-        private int _scoreCount;
-        private string _login;
-        private string _password;
+        private PlayerDto _player;
+
+        public REvent ReadyEvent;
+
+        public float MaxY => _player.maxY;
 
         public void Init(GameManager gameManager)
         {
             _gameManager = gameManager;
+            ReadyEvent = gameManager.gameObject.AddComponent<REvent>();
         }
 
         public void Save()
         {
-            _scoreCount = _gameManager.ScoreCounter.ScoreCount + _scoreCount;
-            _gameManager.FirebaseManager.SetUser(new PlayerDto(_login, _password, _scoreCount));
+            _player.score += _gameManager.HeightCounter.ScoreCount;
+            _player.maxY = Mathf.Max(_player.maxY, _gameManager.HeightCounter.MaxY);
+            _gameManager.FirebaseManager.SetUser(_player);
         }
 
-        public int GetTotalScore() => _scoreCount + GetEarnedScore();
+        public int GetTotalScore() => _player.score + GetEarnedScore();
 
-        public int GetEarnedScore() => _gameManager.ScoreCounter.ScoreCount;
+        public int GetEarnedScore() => _gameManager.HeightCounter.ScoreCount;
 
         public void SetUser(PlayerDto user)
         {
-            _login = user.login;
-            _password = user.password;
-            _scoreCount = user.score;
+            _player = user;
+            ReadyEvent.Invoke();
         }
     }
 }

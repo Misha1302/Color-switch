@@ -38,7 +38,7 @@
             GameManager.FirebaseManager.GetUser<PlayerDto>(loginTxt, user =>
             {
                 if (user == null)
-                    StartGame(new PlayerDto(loginTxt, passwordTxt, 0));
+                    StartGame(new PlayerDto(loginTxt, passwordTxt, 0, 0));
                 else
                     message.text = "User with the same name already added";
             });

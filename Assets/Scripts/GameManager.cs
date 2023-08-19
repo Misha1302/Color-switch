@@ -15,9 +15,10 @@ public sealed class GameManager : MonoBehaviour
     [SerializeField] private StateManager stateManager;
     [SerializeField] private StatisticManager statisticManager;
     [SerializeField] private PlayersList playersList;
+    [SerializeField] private MaxYPanel maxYPanel;
 
     public IBallInput MouseBallInput { get; private set; }
-    public ScoreCounter ScoreCounter { get; private set; }
+    public HeightCounter HeightCounter { get; private set; }
     public GameDataManager GameDataManager { get; private set; }
     public FirebaseManager FirebaseManager { get; private set; }
 
@@ -29,7 +30,7 @@ public sealed class GameManager : MonoBehaviour
     {
         var input = InitInput();
         var optimizer = gameObject.AddComponent<Optimizer>();
-        ScoreCounter = gameObject.AddComponent<ScoreCounter>();
+        HeightCounter = gameObject.AddComponent<HeightCounter>();
         FirebaseManager = gameObject.AddComponent<FirebaseManager>();
 
         GameDataManager = new GameDataManager();
@@ -38,10 +39,11 @@ public sealed class GameManager : MonoBehaviour
         Ball.Init(this);
         LevelGenerator.Init(this);
         StateManager.Init(this);
-        ScoreCounter.Init(this);
+        HeightCounter.Init(this);
         stateManager.Init(this);
         statisticManager.Init(this);
         playersList.Init(this);
+        maxYPanel.Init(this);
         input.Init(this);
         optimizer.Init(this);
 

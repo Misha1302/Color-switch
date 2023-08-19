@@ -1,14 +1,12 @@
-namespace Data
+﻿namespace Data
 {
-    public sealed class ScoreCounter : GameClass
+    public sealed class ScoreCounter
     {
         private int _maxScoreCount = -1;
 
-        public int ScoreCount => GetScoreCount();
-
-        private int GetScoreCount()
+        public int GetScoreCount(float y)
         {
-            var value = (int)(GameManager.Ball.transform.position.y / 7);
+            var value = (int)(y / 7);
             if (_maxScoreCount > value)
                 return _maxScoreCount;
 
