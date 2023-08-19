@@ -1,5 +1,6 @@
 ﻿namespace GameDataBase.Ui
 {
+    using Data;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;

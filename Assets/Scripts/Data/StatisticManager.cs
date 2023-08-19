@@ -1,19 +1,22 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public sealed class StatisticManager : GameClass
+namespace Data
 {
-    [SerializeField] private TMP_Text earnedScore;
-    [SerializeField] private string textFormat;
-
-
-    protected override void AtStart()
+    public sealed class StatisticManager : GameClass
     {
-        AtUpdate();
-    }
+        [SerializeField] private TMP_Text earnedScore;
+        [SerializeField] private string textFormat;
 
-    protected override void AtUpdate()
-    {
-        earnedScore.text = string.Format(textFormat, GameManager.GameDataManager.GetEarnedScore());
+
+        protected override void AtStart()
+        {
+            AtUpdate();
+        }
+
+        protected override void AtUpdate()
+        {
+            earnedScore.text = string.Format(textFormat, GameManager.GameDataManager.GetEarnedScore());
+        }
     }
 }

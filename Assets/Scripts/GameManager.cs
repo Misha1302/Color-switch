@@ -4,6 +4,7 @@ using Data;
 using Firebase;
 using GameDataBase;
 using GameDataBase.Ui;
+using Obstacles;
 using State;
 using UnityEngine;
 

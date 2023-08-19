@@ -1,6 +1,9 @@
 ﻿using GameDataBase.Ui;
 
-public static class StaticData
+namespace Data
 {
-    public static AuthUICache AuthCache = new(string.Empty, string.Empty);
+    public static class StaticData
+    {
+        public static AuthUICache AuthCache = new(string.Empty, string.Empty);
+    }
 }
