@@ -13,6 +13,7 @@ public sealed class GameManager : MonoBehaviour
     [SerializeField] private LevelGenerator levelGenerator;
     [SerializeField] private StateManager stateManager;
     [SerializeField] private StatisticManager statisticManager;
+    [SerializeField] private PlayersList playersList;
 
     public IBallInput MouseBallInput { get; private set; }
     public ScoreCounter ScoreCounter { get; private set; }
@@ -39,6 +40,7 @@ public sealed class GameManager : MonoBehaviour
         ScoreCounter.Init(this);
         stateManager.Init(this);
         statisticManager.Init(this);
+        playersList.Init(this);
         input.Init(this);
         optimizer.Init(this);
 

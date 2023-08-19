@@ -2,6 +2,7 @@ namespace GameDataBase
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Firebase;
     using Firebase.Database;
     using Firebase.Extensions;
@@ -10,11 +11,14 @@ namespace GameDataBase
 
     public sealed class FirebaseManager : MonoBehaviour
     {
+        public REvent initEvent;
         private FirebaseApp _app;
         private DatabaseReference _db;
 
         private void Awake()
         {
+            initEvent = gameObject.AddComponent<REvent>();
+
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 var dependencyStatus = task.Result;
@@ -26,6 +30,26 @@ namespace GameDataBase
 
                 _app.Options.DatabaseUrl = new Uri(FirebaseManagerSecrets.RealtimeDatabaseUrl);
                 _db = FirebaseDatabase.GetInstance(FirebaseManagerSecrets.RealtimeDatabaseUrl).RootReference;
+
+                initEvent.Invoke();
+            });
+        }
+
+        public void GetAllUsers<T>(Action<List<T>> whenUsersReceived)
+        {
+            _db.Child("users").GetValueAsync().ContinueWithOnMainThread(t =>
+            {
+                if (t.IsFaulted || !t.IsCompleted)
+                    throw t.Exception!;
+
+                var enumerable = ((Dictionary<string, object>)t.Result.Value).Select(x => x.Value).Select(x =>
+                {
+                    var json = JsonConvert.SerializeObject((Dictionary<string, object>)x);
+                    var obj = JsonUtility.FromJson<T>(json);
+                    return obj;
+                }).ToList();
+
+                whenUsersReceived.Invoke(enumerable);
             });
         }
 
